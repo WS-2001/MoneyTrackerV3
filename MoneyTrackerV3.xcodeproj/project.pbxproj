@@ -14,6 +14,12 @@
 		71BC107A2B85AF170014321D /* MoneyTrackerV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10792B85AF170014321D /* MoneyTrackerV3Tests.swift */; };
 		71BC10842B85AF170014321D /* MoneyTrackerV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10832B85AF170014321D /* MoneyTrackerV3UITests.swift */; };
 		71BC10862B85AF170014321D /* MoneyTrackerV3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10852B85AF170014321D /* MoneyTrackerV3UITestsLaunchTests.swift */; };
+		71BC10932B85AF620014321D /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10922B85AF620014321D /* Transaction.swift */; };
+		71BC10952B85AF7E0014321D /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10942B85AF7E0014321D /* TransactionType.swift */; };
+		71BC10972B85AFA80014321D /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10962B85AFA80014321D /* Friend.swift */; };
+		71BC10992B85AFE80014321D /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10982B85AFE80014321D /* FriendDetailView.swift */; };
+		71BC109B2B85B0070014321D /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC109A2B85B0070014321D /* FriendsViewModel.swift */; };
+		71BC109D2B85B02A0014321D /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC109C2B85B02A0014321D /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		71BC107F2B85AF170014321D /* MoneyTrackerV3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyTrackerV3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BC10832B85AF170014321D /* MoneyTrackerV3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTrackerV3UITests.swift; sourceTree = "<group>"; };
 		71BC10852B85AF170014321D /* MoneyTrackerV3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTrackerV3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		71BC10922B85AF620014321D /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		71BC10942B85AF7E0014321D /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		71BC10962B85AFA80014321D /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		71BC10982B85AFE80014321D /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
+		71BC109A2B85B0070014321D /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
+		71BC109C2B85B02A0014321D /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +108,13 @@
 			children = (
 				71BC10682B85AF140014321D /* MoneyTrackerV3App.swift */,
 				71BC106A2B85AF140014321D /* ContentView.swift */,
+				71BC10982B85AFE80014321D /* FriendDetailView.swift */,
 				71BC106C2B85AF170014321D /* Assets.xcassets */,
+				71BC10922B85AF620014321D /* Transaction.swift */,
+				71BC10942B85AF7E0014321D /* TransactionType.swift */,
+				71BC10962B85AFA80014321D /* Friend.swift */,
+				71BC109A2B85B0070014321D /* FriendsViewModel.swift */,
+				71BC109C2B85B02A0014321D /* UserDefaultsManager.swift */,
 				71BC106E2B85AF170014321D /* Preview Content */,
 			);
 			path = MoneyTrackerV3;
@@ -257,8 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BC10952B85AF7E0014321D /* TransactionType.swift in Sources */,
 				71BC106B2B85AF140014321D /* ContentView.swift in Sources */,
+				71BC10972B85AFA80014321D /* Friend.swift in Sources */,
+				71BC10992B85AFE80014321D /* FriendDetailView.swift in Sources */,
+				71BC109B2B85B0070014321D /* FriendsViewModel.swift in Sources */,
 				71BC10692B85AF140014321D /* MoneyTrackerV3App.swift in Sources */,
+				71BC109D2B85B02A0014321D /* UserDefaultsManager.swift in Sources */,
+				71BC10932B85AF620014321D /* Transaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
