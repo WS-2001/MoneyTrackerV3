@@ -36,11 +36,17 @@ struct ContentView: View {
         }
         .onChange(of: selectedTab) { newTab in
             if newTab == .friends {
-                // Do something when switching to the Friends tab
+                generateHapticFeedback(style: .light)
             } else if newTab == .settings {
-                // Do something when switching to the Settings tab
+                generateHapticFeedback(style: .light)
             }
         }
+    }
+    
+    private func generateHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.prepare()
+        generator.impactOccurred()
     }
 }
 
