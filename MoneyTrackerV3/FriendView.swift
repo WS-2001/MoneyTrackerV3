@@ -11,6 +11,7 @@ struct FriendsView: View {
     @Binding var newFriendName: String
     @State private var isShowingError = false
     @State private var isAddFriendSheetPresented = false
+    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var body: some View {
         NavigationView {
@@ -71,11 +72,12 @@ struct FriendsView: View {
                 .background(Color.clear)
                 .cornerRadius(20)
                 .sheet(isPresented: $isAddFriendSheetPresented) {
-                    AddFriendView(isPresented: $isAddFriendSheetPresented, friendsViewModel: friendsViewModel, newFriendName: $newFriendName)
+                    AddFriendView(isPresented: $isAddFriendSheetPresented, friendsViewModel: friendsViewModel, newFriendName: $newFriendName, isDarkMode: $isDarkMode)
                 }
             }
         }
         .navigationTitle("Money Tracker")
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
     private func getIndex(for friend: Friend) -> Int {
         guard let index = friendsViewModel.friends.firstIndex(where: { $0.id == friend.id }) else {

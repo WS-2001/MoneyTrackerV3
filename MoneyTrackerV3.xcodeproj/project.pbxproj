@@ -10,6 +10,8 @@
 		71961E142B85F472001C7C06 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E132B85F472001C7C06 /* FriendView.swift */; };
 		71961E162B85F733001C7C06 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E152B85F733001C7C06 /* SettingsView.swift */; };
 		71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E172B85F887001C7C06 /* AddFriendView.swift */; };
+		71961E1A2B87BAC5001C7C06 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E192B87BAC5001C7C06 /* AboutView.swift */; };
+		71961E1C2B88AB6D001C7C06 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E1B2B88AB6D001C7C06 /* AddTransactionView.swift */; };
 		71BC10692B85AF140014321D /* MoneyTrackerV3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10682B85AF140014321D /* MoneyTrackerV3App.swift */; };
 		71BC106B2B85AF140014321D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC106A2B85AF140014321D /* ContentView.swift */; };
 		71BC106D2B85AF170014321D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71BC106C2B85AF170014321D /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		71961E132B85F472001C7C06 /* FriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		71961E152B85F733001C7C06 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71961E172B85F887001C7C06 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
+		71961E192B87BAC5001C7C06 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		71961E1B2B88AB6D001C7C06 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
 		71BC10652B85AF140014321D /* MoneyTrackerV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyTrackerV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BC10682B85AF140014321D /* MoneyTrackerV3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTrackerV3App.swift; sourceTree = "<group>"; };
 		71BC106A2B85AF140014321D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71961E1D2B88B17D001C7C06 /* Currently unused */ = {
+			isa = PBXGroup;
+			children = (
+				71961E1B2B88AB6D001C7C06 /* AddTransactionView.swift */,
+			);
+			path = "Currently unused";
+			sourceTree = "<group>";
+		};
 		71BC105C2B85AF140014321D = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +129,7 @@
 				71961E152B85F733001C7C06 /* SettingsView.swift */,
 				71961E132B85F472001C7C06 /* FriendView.swift */,
 				71961E172B85F887001C7C06 /* AddFriendView.swift */,
+				71961E192B87BAC5001C7C06 /* AboutView.swift */,
 				71BC10982B85AFE80014321D /* FriendDetailView.swift */,
 				71BC106C2B85AF170014321D /* Assets.xcassets */,
 				71BC10922B85AF620014321D /* Transaction.swift */,
@@ -124,6 +137,7 @@
 				71BC10962B85AFA80014321D /* Friend.swift */,
 				71BC109A2B85B0070014321D /* FriendsViewModel.swift */,
 				71BC109C2B85B02A0014321D /* UserDefaultsManager.swift */,
+				71961E1D2B88B17D001C7C06 /* Currently unused */,
 				71BC106E2B85AF170014321D /* Preview Content */,
 			);
 			path = MoneyTrackerV3;
@@ -285,9 +299,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BC10952B85AF7E0014321D /* TransactionType.swift in Sources */,
+				71961E1C2B88AB6D001C7C06 /* AddTransactionView.swift in Sources */,
 				71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */,
 				71961E142B85F472001C7C06 /* FriendView.swift in Sources */,
 				71BC106B2B85AF140014321D /* ContentView.swift in Sources */,
+				71961E1A2B87BAC5001C7C06 /* AboutView.swift in Sources */,
 				71BC10972B85AFA80014321D /* Friend.swift in Sources */,
 				71BC10992B85AFE80014321D /* FriendDetailView.swift in Sources */,
 				71961E162B85F733001C7C06 /* SettingsView.swift in Sources */,

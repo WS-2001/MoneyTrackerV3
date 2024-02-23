@@ -13,9 +13,19 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            
+            //About
+            Section() {
+                            NavigationLink(destination: AboutView()) {
+                                Text("About")
+                            }
+                        }
+            
+            //Dark Mode
             Section(header: Text("Appearance")) {
                 Toggle("Dark Mode", isOn: $isDarkMode)
                     .onChange(of: isDarkMode) { newValue in
+                        print("Dark Mode changed to \(newValue)")
                         UserDefaults.standard.set(newValue, forKey: "isDarkMode")
                         updateAppearanceMode(newValue)
                     }

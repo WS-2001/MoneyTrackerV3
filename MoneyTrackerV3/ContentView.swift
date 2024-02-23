@@ -11,6 +11,7 @@ struct ContentView: View {
     @StateObject private var friendsViewModel = FriendsViewModel()
     @State private var newFriendName = ""
     @State private var selectedTab: Tab = .friends
+    @State private var isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     
     enum Tab {
         case friends, settings
@@ -41,6 +42,8 @@ struct ContentView: View {
                 generateHapticFeedback(style: .light)
             }
         }
+//    .environment(\.colorScheme, isDarkMode ? .dark : .light)
+    .preferredColorScheme(isDarkMode ? .dark : .light)
     }
     
     private func generateHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {

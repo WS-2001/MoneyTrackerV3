@@ -24,9 +24,7 @@ struct FriendDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
-            
-//            sortingOptionsView()
-            
+                        
             List {
                 ForEach(filteredTransactions()) { transaction in
                     let transactionType = transaction.type == .lend ? "Lent" : "Borrowed"
@@ -41,7 +39,7 @@ struct FriendDetailView: View {
                 }
             }
             
-            // For adding a new Transaction
+            // Adding a new Transaction
             HStack {
                 Text("£")
                     .font(.title)
@@ -49,7 +47,7 @@ struct FriendDetailView: View {
                 
                 TextField("Enter amount", text: $newTransactionAmount)
                     .keyboardType(.decimalPad)
-                    .padding(.trailing, 5) // Adjust padding as needed
+                    .padding(.trailing, 5)
                 
                 Picker("Type", selection: $selectedTransactionType) {
                     Text("Lend").tag(TransactionType.lend)

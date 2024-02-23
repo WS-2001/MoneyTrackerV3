@@ -12,6 +12,7 @@ struct AddFriendView: View {
     @Binding var isPresented: Bool
     @ObservedObject var friendsViewModel: FriendsViewModel
     @Binding var newFriendName: String
+    @Binding var isDarkMode: Bool
     @State private var isShowingError = false
     
     var body: some View {
@@ -49,10 +50,11 @@ struct AddFriendView: View {
                     )
                 }
             }
+            .preferredColorScheme(isDarkMode ? .dark : .light)
             .navigationBarItems(leading: Button("Cancel") {
                 isPresented = false
             })
         }
-        .preferredColorScheme(friendsViewModel.isDarkMode ? .dark : .light) // Set the color scheme based on the user's setting
+//        .preferredColorScheme(friendsViewModel.isDarkMode ? .dark : .light) // Set the color scheme based on the user's setting
     }
 }
