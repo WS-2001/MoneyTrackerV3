@@ -36,10 +36,14 @@ struct EditNoteView: View {
             }
             .padding()
             .navigationTitle("Edit Note")
-            .navigationBarItems(trailing: Button("Cancel") {
-                isEditingNote = false
-            })
-            .preferredColorScheme(friendsViewModel.isDarkMode ? .dark : .light)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        isEditingNote = false
+                    }
+                }
+            }
         }
+        .environment(\.colorScheme, UserDefaults.standard.bool(forKey: "isDarkMode") ? .dark : .light)
     }
 }

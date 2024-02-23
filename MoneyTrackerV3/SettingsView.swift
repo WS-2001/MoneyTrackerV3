@@ -38,6 +38,7 @@ struct SettingsView: View {
                 Stepper("Number of Lines: \(notePreviewLines)", value: $notePreviewLines, in: 1...10)
                     .onChange(of: notePreviewLines) { newValue in
                         print("Note Preview: \(newValue)")
+                        handleHapticFeedback()
                         UserDefaults.standard.set(newValue, forKey: "notePreviewLines")
                     }
                 
@@ -47,7 +48,7 @@ struct SettingsView: View {
             }
             
             // Editing Icon
-            Section(header: Text("Editing Icon")){
+            Section(header: Text("Note Editing Icon")){
                 Picker(selection: $noteEditingSymbol, label: Text("Select Icon")) {
                     Image(systemName: "pencil.circle")
                         .tag("pencil.circle")
@@ -58,6 +59,9 @@ struct SettingsView: View {
                         .padding()
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                .onChange(of: noteEditingSymbol) { newValue in
+                    handleHapticFeedback()
+                }
             }
         }
         .navigationTitle("Settings")
@@ -65,5 +69,10 @@ struct SettingsView: View {
 
     private func updateAppearanceMode(_ isDarkMode: Bool) {
         UIApplication.shared.windows.first?.rootViewController?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+    }
+    
+    private func handleHapticFeedback() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 }
