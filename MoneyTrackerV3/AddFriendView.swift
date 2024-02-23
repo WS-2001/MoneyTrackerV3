@@ -14,20 +14,32 @@ struct AddFriendView: View {
     @Binding var newFriendName: String
     @Binding var isDarkMode: Bool
     @State private var isShowingError = false
-    
+
     var body: some View {
-        NavigationView
-        {
-            VStack {                
-                Text("Add Friend")
+        NavigationView {
+            VStack {
+                Spacer()
+
+                Image(systemName: "person.crop.circle.fill.badge.plus")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 80, height: 80)
+                    .foregroundColor(Color.blue)
+
+                Text("Add a Friend")
                     .font(.title)
                     .padding()
-                
+
                 TextField("Enter friend's name", text: $newFriendName)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                Button("Save") {
+                    .onAppear {
+                        DispatchQueue.main.async {
+                            UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+                        }
+                    }
+
+                Button(action: {
                     if newFriendName.isEmpty {
                         isShowingError = true
                     } else {
@@ -36,25 +48,31 @@ struct AddFriendView: View {
                         newFriendName = ""
                         isPresented = false
                     }
+                }) {
+                    Text("Add Friend")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
                 .padding()
-                .foregroundColor(.white)
-                .background(Color.blue)
-                .cornerRadius(10)
-                .padding()
-                .alert(isPresented: $isShowingError) {
-                    Alert(
-                        title: Text("Error"),
-                        message: Text("Your friend is a mysterious person... Please enter a name."),
-                        dismissButton: .default(Text("OK"))
-                    )
-                }
+
+                Spacer()
+
             }
+            .padding()
+            .background(isDarkMode ? Color.black : Color.white)
             .preferredColorScheme(isDarkMode ? .dark : .light)
             .navigationBarItems(leading: Button("Cancel") {
                 isPresented = false
             })
         }
-//        .preferredColorScheme(friendsViewModel.isDarkMode ? .dark : .light) // Set the color scheme based on the user's setting
+        .alert(isPresented: $isShowingError) {
+            Alert(
+                title: Text("Error"),
+                message: Text("Your friend is a mysterious person... Please enter a name."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }

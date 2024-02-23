@@ -12,4 +12,5 @@ struct Transaction: Identifiable, Codable {
     let amount: Double
     let type: TransactionType
     let date: Date
+    var note: String?
 }

@@ -13,6 +13,11 @@ struct FriendDetailView: View {
     @State private var selectedTransactionType = TransactionType.lend
     @State private var filterOption: FilterOption = .both
     @State private var isSortingOptionsVisible = false
+    @State private var transactionNote = ""
+    @State private var isEditingNote = false
+    @State private var selectedTransactionID: UUID?
+    @AppStorage("notePreviewLines") private var notePreviewLines = 3
+    @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
     
     var body: some View {
         VStack {
@@ -31,7 +36,41 @@ struct FriendDetailView: View {
                     let formattedAmount = String(format: "%.2f", transaction.amount)
                     let formattedTransactionDate = formattedDate(transaction.date)
                     
-                    Text("\(transactionType) £\(formattedAmount) on \(formattedTransactionDate)")
+                    VStack(alignment: .leading) {
+                        Text("\(transactionType) £\(formattedAmount) on \(formattedTransactionDate)")
+                        HStack {
+                            if let note = transaction.note, !note.isEmpty {
+                                Text("\(note)")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(notePreviewLines)
+                            }
+
+                            Spacer()
+
+                            Button(action: {
+                                selectedTransactionID = transaction.id
+                                transactionNote = transaction.note ?? ""
+                                isEditingNote = true
+                            }) {
+                                Image(systemName: noteEditingSymbol)
+                                    .foregroundColor(.blue)
+                            }
+                            .fullScreenCover(isPresented: $isEditingNote) {
+                                EditNoteView(
+                                    isEditingNote: $isEditingNote,
+                                    note: $transactionNote,
+                                    onSave: { editedNote in
+                                        if let index = friend.transactions.firstIndex(where: { $0.id == selectedTransactionID }) {
+                                            friend.transactions[index].note = editedNote
+                                            friendsViewModel.saveFriends()
+                                        }
+                                    },
+                                    friendsViewModel: friendsViewModel
+                                )
+                            }
+                        }
+                    }
                 }
                 .onDelete { indexSet in
                     friend.transactions.remove(atOffsets: indexSet)
@@ -55,14 +94,24 @@ struct FriendDetailView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                Button("Add Transaction") {
+                // Add Transaction button
+                Button {
                     if let amount = Double(newTransactionAmount) {
-                        let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date())
+                        let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date(),note: transactionNote)
                         friend.transactions.append(newTransaction)
                         friendsViewModel.saveFriends()
                         newTransactionAmount = ""
+                        transactionNote = ""
                     }
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title3)
                 }
+                .foregroundColor(.white)
+                .padding(10)
+                .background(Color.blue)
+                .cornerRadius(8)
+                
             }
             .padding()
             .textFieldStyle(RoundedBorderTextFieldStyle())

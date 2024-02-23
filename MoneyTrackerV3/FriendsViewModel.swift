@@ -28,7 +28,7 @@ class FriendsViewModel: ObservableObject {
         }
     }
     
-    // Load Dark Mode setting from UserDefaults or other sources
+    // Load Dark Mode setting from UserDefaults
     func loadDarkModeSetting() {
         if let isDarkModeSetting = UserDefaults.standard.value(forKey: "isDarkMode") as? Bool {
             isDarkMode = isDarkModeSetting
@@ -44,7 +44,4 @@ class FriendsViewModel: ObservableObject {
         friends.append(newFriend)
         saveFriends()
     }
-
-    // NEED TO:
-    // ADD A REMOVE FUNCTION (lol add a remove)
 }
