@@ -54,8 +54,20 @@ struct SettingsView: View {
                         .tag("pencil.circle")
                         .padding()
                     
+                    Image(systemName: "righttriangle.fill")
+                        .tag("righttriangle.fill")
+                        .padding()
+                    
+                    Image(systemName: "note.text")
+                        .tag("note.text")
+                        .padding()
+                    
                     Image(systemName: "arrow.right.circle")
                         .tag("arrow.right.circle")
+                        .padding()
+                    
+                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                        .tag("arrow.up.left.and.arrow.down.right")
                         .padding()
                 }
                 .pickerStyle(SegmentedPickerStyle())

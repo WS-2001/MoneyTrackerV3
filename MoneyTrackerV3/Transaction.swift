@@ -9,8 +9,8 @@ import Foundation
 struct Transaction: Identifiable, Codable {
     let id: UUID
     let friend: UUID  // Had to change friendID to friend due to ContentView ._.
-    let amount: Double
-    let type: TransactionType
-    let date: Date
+    var amount: Double
+    var type: TransactionType
+    var date: Date
     var note: String?
 }

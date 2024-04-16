@@ -16,6 +16,7 @@ struct FriendDetailView: View {
     @State private var transactionNote = ""
     @State private var isEditingNote = false
     @State private var selectedTransactionID: UUID?
+    @State private var isEditingTransaction = false
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
     
@@ -49,25 +50,18 @@ struct FriendDetailView: View {
                             Spacer()
 
                             Button(action: {
-                                selectedTransactionID = transaction.id
-                                transactionNote = transaction.note ?? ""
-                                isEditingNote = true
+                                if let index = friend.transactions.firstIndex(where: { $0.id == transaction.id }) {
+                                    selectedTransactionID = transaction.id
+                                    isEditingTransaction = true
+                                }
                             }) {
                                 Image(systemName: noteEditingSymbol)
                                     .foregroundColor(.blue)
                             }
-                            .fullScreenCover(isPresented: $isEditingNote) {
-                                EditNoteView(
-                                    isEditingNote: $isEditingNote,
-                                    note: $transactionNote,
-                                    onSave: { editedNote in
-                                        if let index = friend.transactions.firstIndex(where: { $0.id == selectedTransactionID }) {
-                                            friend.transactions[index].note = editedNote
-                                            friendsViewModel.saveFriends()
-                                        }
-                                    },
-                                    friendsViewModel: friendsViewModel
-                                )
+                            .fullScreenCover(isPresented: $isEditingTransaction) {
+                                if let index = friend.transactions.firstIndex(where: { $0.id == selectedTransactionID }) {
+                                    EditTransactionView(transaction: $friend.transactions[index], friendsViewModel: friendsViewModel)
+                                }
                             }
                         }
                     }
@@ -94,7 +88,7 @@ struct FriendDetailView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                // Add Transaction button
+                // Button itself
                 Button {
                     if let amount = Double(newTransactionAmount) {
                         let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date(),note: transactionNote)
