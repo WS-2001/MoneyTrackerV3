@@ -9,6 +9,8 @@ import SwiftUI
 struct FriendDetailView: View {
     @Binding var friend: Friend
     @ObservedObject var friendsViewModel: FriendsViewModel
+    
+    // Tracking allllll of these variables
     @State private var newTransactionAmount = ""
     @State private var selectedTransactionType = TransactionType.lend
     @State private var filterOption: FilterOption = .both
@@ -17,6 +19,8 @@ struct FriendDetailView: View {
     @State private var isEditingNote = false
     @State private var selectedTransactionID: UUID?
     @State private var isEditingTransaction = false
+    
+    // Defaults
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
     
