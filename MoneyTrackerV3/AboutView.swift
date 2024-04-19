@@ -14,6 +14,7 @@ struct AboutView: View {
             Text("Money Tracker")
                 .font(.title)
                 .padding()
+                .bold()
 
             Text("Money Tracker is an app that helps you keep track of the money you borrowed and lent to friends. It's simple to use, leveraging Apple's design language to ensure it stays consistent with other apps you may use.\n\nTip: to remove any fields, you can swipe the field to the left, just like any Apple app!")
                 .font(.body)

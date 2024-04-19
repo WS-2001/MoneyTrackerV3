@@ -25,6 +25,13 @@ struct SettingsView: View {
                 }
             }
             
+            //Help
+            Section() {
+                NavigationLink(destination: HelpView()) {
+                    Text("Help")
+                }
+            }
+            
             //Dark Mode
             Section(header: Text("Appearance")) {
                 Toggle("Dark Mode", isOn: $isDarkMode)
