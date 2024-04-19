@@ -27,7 +27,7 @@ struct EditTransactionView: View {
         NavigationView {
             Form {
                 // Editing amount of transaction
-                // Needed to add .onChangeOf as the 2dp didn't show up after the significant figure amount (e.g. .00)
+                // Needed to add .onChangeOf bit as the 2dp didn't show up after the significant figure amount (e.g. .00)
                 Section(header: Text("Amount")) {
                     TextField("Amount", text: $amountString)
                         .keyboardType(.decimalPad)

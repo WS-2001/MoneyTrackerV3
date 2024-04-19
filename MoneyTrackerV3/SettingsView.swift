@@ -12,6 +12,8 @@ struct SettingsView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
+    @AppStorage("showCharts") private var showCharts = true
+    @AppStorage("showTotalChart") private var showTotalChart = true
 
     var body: some View {
         Form {
@@ -43,6 +45,27 @@ struct SettingsView: View {
                     }
                 
                 Text("Adjust the number of lines displayed in the note preview before it truncates the rest.")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+            
+            // Charts
+            Section(header: Text("Charts")) {
+                Toggle("Show Charts for Friends", isOn: $showCharts)
+                    .onChange(of: showCharts) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "showCharts")
+                    }
+                
+                Text("If enabled, a chart will show at the top of a friend's transaction list.")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Toggle("Show Total Chart", isOn: $showTotalChart)
+                    .onChange(of: showTotalChart) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "showTotalChart")
+                    }
+                
+                Text("If enabled, a chart will show at the top of the Friends home page with the total lend and borrow amounts.")
                     .font(.caption)
                     .foregroundColor(.gray)
             }

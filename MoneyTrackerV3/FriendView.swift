@@ -11,12 +11,24 @@ struct FriendsView: View {
     @Binding var newFriendName: String
     @State private var isShowingError = false
     @State private var isAddFriendSheetPresented = false
+    
+    // Defaults for Settings
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("showTotalChart") private var showTotalChart = true
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
+                    // Chart for total lent and borrowed
+                    // Display only if toggle is enabled in Settings
+                    if showTotalChart {
+                        Section(header: Text("Total Lent and Borrowed")) {
+                            TotalChartView(friends: friendsViewModel.friends)
+                        }
+                    }
+                    
+                    // For every entry in list of friends
                     ForEach(friendsViewModel.friends) { friend in
                         NavigationLink(
                             destination: FriendDetailView(
@@ -54,8 +66,10 @@ struct FriendsView: View {
                     }
 
                 }
-                Spacer() // Add Spacer to push the button to the bottom
+                
+                Spacer() // Add Spacer to push the Add Friend button to the bottom
 
+                // Add Friend Button and Sheet
                 Button(action: {
                     isAddFriendSheetPresented = true
                 }) {

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Storage solution I opted for in my app
 struct UserDefaultsManager {
     static let friendsKey = "friends"
 

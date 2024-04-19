@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var selectedTab: Tab = .friends
     @State private var isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
     
+    // Tabs
     enum Tab {
         case friends, settings
     }

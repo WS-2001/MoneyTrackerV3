@@ -5,6 +5,7 @@
 //  Created by Wares on 21/02/2024.
 //
 import SwiftUI
+import Charts
 
 struct FriendDetailView: View {
     @Binding var friend: Friend
@@ -23,6 +24,7 @@ struct FriendDetailView: View {
     // Defaults
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
+    @AppStorage("showCharts") private var showCharts = true
     
     var body: some View {
         VStack {
@@ -34,7 +36,15 @@ struct FriendDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
-                        
+            
+            // Display chart only if toggle is enabled in Settings
+            if showCharts {
+                Section() { // Removed header text to minimise clutter
+                    FriendBalanceChartView(friend: friend)
+                }
+            }
+            
+            // The list of friend's transactions
             List {
                 ForEach(filteredTransactions()) { transaction in
                     let transactionType = transaction.type == .lend ? "Lent" : "Borrowed"
@@ -44,6 +54,7 @@ struct FriendDetailView: View {
                     VStack(alignment: .leading) {
                         Text("\(transactionType) £\(formattedAmount) on \(formattedTransactionDate)")
                         HStack {
+                            // If note is NOT empty, display preview of note with notePreviewLines amount from Settings
                             if let note = transaction.note, !note.isEmpty {
                                 Text("\(note)")
                                     .font(.caption)
@@ -53,6 +64,7 @@ struct FriendDetailView: View {
 
                             Spacer()
 
+                            // Edit Transaction
                             Button(action: {
                                 if let index = friend.transactions.firstIndex(where: { $0.id == transaction.id }) {
                                     selectedTransactionID = transaction.id
@@ -70,6 +82,7 @@ struct FriendDetailView: View {
                         }
                     }
                 }
+                // Deleting transaction (with slide gesture)
                 .onDelete { indexSet in
                     friend.transactions.remove(atOffsets: indexSet)
                     friendsViewModel.saveFriends()
@@ -92,7 +105,7 @@ struct FriendDetailView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                // Button itself
+                // Button itself (icon)
                 Button {
                     if let amount = Double(newTransactionAmount) {
                         let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date(),note: transactionNote)
@@ -115,6 +128,8 @@ struct FriendDetailView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
         }
         .navigationTitle(friend.name)
+        
+        // Sort options in the icon on the toolbar
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Menu {
@@ -145,10 +160,6 @@ struct FriendDetailView: View {
                 .menuStyle(BorderlessButtonMenuStyle())
             }
         }
-    
-//        .popover(isPresented: $isSortingOptionsVisible, arrowEdge: .top) {
-//            sortingOptionsView()
-//        }
     }
     
     private func sortedTransactions() -> [Transaction] {
@@ -186,6 +197,7 @@ struct FriendDetailView: View {
         return formatter.string(from: date)
     }
     
+    // Making the Sort options its own little pulldown menu and giving them a little icon next to them. Declutters the screen this way.
     private func sortingOptionsView() -> some View {
         Menu("Sort") {
             Button(action: {
@@ -227,4 +239,27 @@ enum FilterOption: String, CaseIterable {
     case both = "Both"
     case lent = "Lent"
     case borrowed = "Borrowed"
+}
+
+// For current friend's totalLend and totalBorrow values to be displayed in the bar chart
+struct FriendBalanceChartView: View {
+    let friend: Friend
+    
+    var body: some View {
+        Chart {
+            BarMark(
+                x: .value("Amount", friend.totalLend),
+                y: .value("Type", "Lent")
+            )
+            .foregroundStyle(.green)
+            
+            BarMark(
+                x: .value("Amount", friend.totalBorrow),
+                y: .value("Type", "Borrowed")
+            )
+            .foregroundStyle(.red)
+        }
+        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+        .frame(height: 120)
+    }
 }
