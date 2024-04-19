@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		716854252BD242E80061241A /* TotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854242BD242E80061241A /* TotalChartView.swift */; };
 		71961E142B85F472001C7C06 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E132B85F472001C7C06 /* FriendView.swift */; };
 		71961E162B85F733001C7C06 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E152B85F733001C7C06 /* SettingsView.swift */; };
 		71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E172B85F887001C7C06 /* AddFriendView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		716854242BD242E80061241A /* TotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalChartView.swift; path = ../TotalChartView.swift; sourceTree = "<group>"; };
 		71961E132B85F472001C7C06 /* FriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		71961E152B85F733001C7C06 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71961E172B85F887001C7C06 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				71BC106A2B85AF140014321D /* ContentView.swift */,
 				71961E152B85F733001C7C06 /* SettingsView.swift */,
 				71961E132B85F472001C7C06 /* FriendView.swift */,
+				716854242BD242E80061241A /* TotalChartView.swift */,
 				71961E172B85F887001C7C06 /* AddFriendView.swift */,
 				71961E192B87BAC5001C7C06 /* AboutView.swift */,
 				71BC10982B85AFE80014321D /* FriendDetailView.swift */,
@@ -303,6 +306,7 @@
 			files = (
 				71BC10952B85AF7E0014321D /* TransactionType.swift in Sources */,
 				71961E1C2B88AB6D001C7C06 /* AddTransactionView.swift in Sources */,
+				716854252BD242E80061241A /* TotalChartView.swift in Sources */,
 				71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */,
 				71961E142B85F472001C7C06 /* FriendView.swift in Sources */,
 				71BC106B2B85AF140014321D /* ContentView.swift in Sources */,
