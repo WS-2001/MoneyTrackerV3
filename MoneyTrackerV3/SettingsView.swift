@@ -20,15 +20,11 @@ struct SettingsView: View {
     var body: some View {
         Form {
             
-            //About
+            //About and Help
             Section() {
                 NavigationLink(destination: AboutView()) {
                     Text("About")
                 }
-            }
-            
-            //Help
-            Section() {
                 NavigationLink(destination: HelpView()) {
                     Text("Help")
                 }

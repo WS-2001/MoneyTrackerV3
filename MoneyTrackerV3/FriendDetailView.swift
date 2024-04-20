@@ -20,6 +20,7 @@ struct FriendDetailView: View {
     @State private var isEditingNote = false
     @State private var selectedTransactionID: UUID?
     @State private var isEditingTransaction = false
+    @State private var showingEmptyTransactionAlert = false
     
     // Defaults
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
@@ -107,6 +108,13 @@ struct FriendDetailView: View {
                 
                 // Button itself (icon)
                 Button {
+                    // If empty, display alert
+                    if newTransactionAmount.isEmpty {
+                        showingEmptyTransactionAlert = true
+                        return
+                    }
+                    
+                    // Otherwise, continue
                     if let amount = Double(newTransactionAmount) {
                         let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date(),note: transactionNote)
                         friend.transactions.append(newTransaction)
@@ -128,6 +136,9 @@ struct FriendDetailView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
         }
         .navigationTitle(friend.name)
+        .alert(isPresented: $showingEmptyTransactionAlert) {
+            Alert(title: Text("Empty Transaction"), message: Text("That's a very suspicious transaction! Please enter an amount before adding a transaction."), dismissButton: .default(Text("OK")))
+        }
         
         // Sort options in the icon on the toolbar
         .toolbar {
