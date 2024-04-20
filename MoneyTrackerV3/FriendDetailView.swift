@@ -22,10 +22,11 @@ struct FriendDetailView: View {
     @State private var isEditingTransaction = false
     @State private var showingEmptyTransactionAlert = false
     
-    // Defaults
+    // Accessing the Settings and defaults if not set
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
     @AppStorage("showCharts") private var showCharts = true
+    @AppStorage("enableNoteEditingIcon") private var enableNoteEditingIcon = true
     
     var body: some View {
         VStack {
@@ -72,8 +73,10 @@ struct FriendDetailView: View {
                                     isEditingTransaction = true
                                 }
                             }) {
-                                Image(systemName: noteEditingSymbol)
-                                    .foregroundColor(.blue)
+                                if enableNoteEditingIcon {
+                                    Image(systemName: noteEditingSymbol)
+                                        .foregroundColor(.blue)
+                                }
                             }
                             .fullScreenCover(isPresented: $isEditingTransaction) {
                                 if let index = friend.transactions.firstIndex(where: { $0.id == selectedTransactionID }) {

@@ -16,6 +16,7 @@ struct SettingsView: View {
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
     @AppStorage("showCharts") private var showCharts = true
     @AppStorage("showTotalChart") private var showTotalChart = true
+    @AppStorage("enableNoteEditingIcon") private var enableNoteEditingIcon = true
 
     var body: some View {
         Form {
@@ -76,7 +77,10 @@ struct SettingsView: View {
             }
             
             // Editing Icon
-            Section(header: Text("Note Editing Icon")){
+            Section(header: Text("Edit Icon")){
+                // Toggle for Note Editing Icon, if on, display and allow below
+                Toggle("Enable Edit Icon", isOn: $enableNoteEditingIcon)
+                
                 Picker(selection: $noteEditingSymbol, label: Text("Select Icon")) {
                     Image(systemName: "pencil.circle")
                         .tag("pencil.circle")
@@ -99,6 +103,8 @@ struct SettingsView: View {
                         .padding()
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                .disabled(!enableNoteEditingIcon) // If Toggle is off, disable
+                .foregroundColor(enableNoteEditingIcon ? .primary : .gray) // If toggle is off, make it grey to signify that it is not available
                 .onChange(of: noteEditingSymbol) { newValue in
                     handleHapticFeedback()
                 }
