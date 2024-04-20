@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject var friendsViewModel: FriendsViewModel
+
     @AppStorage("isDarkMode") private var isDarkMode = false
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
@@ -103,6 +105,14 @@ struct SettingsView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .onChange(of: noteEditingSymbol) { newValue in
                     handleHapticFeedback()
+                }
+            }
+            
+            // Delete All Data
+            Section(header: Text("DANGER AREA")) {
+                NavigationLink(destination: DeleteAllDataView(friendsViewModel: friendsViewModel)) {
+                    Text("Delete All Data...")
+                        .foregroundColor(.red)
                 }
             }
         }

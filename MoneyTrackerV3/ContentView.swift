@@ -29,7 +29,7 @@ struct ContentView: View {
             .tag(Tab.friends)
 
             NavigationView {
-                SettingsView()
+                SettingsView(friendsViewModel: friendsViewModel)
             }
             .tabItem {
                 Label("Settings", systemImage: "gearshape")

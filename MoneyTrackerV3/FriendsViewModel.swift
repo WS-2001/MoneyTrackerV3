@@ -44,4 +44,10 @@ class FriendsViewModel: ObservableObject {
         friends.append(newFriend)
         saveFriends()
     }
+    
+    // CLEAR ALL DATA
+    func deleteAllData() {
+        friends.removeAll()
+        saveFriends()
+    }
 }

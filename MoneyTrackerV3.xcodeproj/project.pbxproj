@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		716854252BD242E80061241A /* TotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854242BD242E80061241A /* TotalChartView.swift */; };
 		716854272BD32B6B0061241A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854262BD32B6B0061241A /* HelpView.swift */; };
+		7168542B2BD35A010061241A /* DeleteAllDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168542A2BD35A010061241A /* DeleteAllDataView.swift */; };
 		71961E142B85F472001C7C06 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E132B85F472001C7C06 /* FriendView.swift */; };
 		71961E162B85F733001C7C06 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E152B85F733001C7C06 /* SettingsView.swift */; };
 		71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E172B85F887001C7C06 /* AddFriendView.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		716854242BD242E80061241A /* TotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalChartView.swift; path = ../TotalChartView.swift; sourceTree = "<group>"; };
 		716854262BD32B6B0061241A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		7168542A2BD35A010061241A /* DeleteAllDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataView.swift; sourceTree = "<group>"; };
 		71961E132B85F472001C7C06 /* FriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		71961E152B85F733001C7C06 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71961E172B85F887001C7C06 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				716854242BD242E80061241A /* TotalChartView.swift */,
 				71961E172B85F887001C7C06 /* AddFriendView.swift */,
 				71961E192B87BAC5001C7C06 /* AboutView.swift */,
+				7168542A2BD35A010061241A /* DeleteAllDataView.swift */,
 				716854262BD32B6B0061241A /* HelpView.swift */,
 				71BC10982B85AFE80014321D /* FriendDetailView.swift */,
 				71961E1E2B88BCA4001C7C06 /* EditTransactionView.swift */,
@@ -322,6 +325,7 @@
 				71BC10692B85AF140014321D /* MoneyTrackerV3App.swift in Sources */,
 				716854272BD32B6B0061241A /* HelpView.swift in Sources */,
 				71BC109D2B85B02A0014321D /* UserDefaultsManager.swift in Sources */,
+				7168542B2BD35A010061241A /* DeleteAllDataView.swift in Sources */,
 				71BC10932B85AF620014321D /* Transaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
