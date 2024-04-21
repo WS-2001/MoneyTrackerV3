@@ -33,6 +33,7 @@ struct AddFriendView: View {
                 TextField("Enter friend's name", text: $newFriendName)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                // When text field appears, execute smoothly on the main thread (where code responsible for updating UI resides), make the object receiving the message and appearing FirstResponder to ensure keyboard appears automatically when entering AddFriend menu. All other fields are nil as we let the view hierarchy figure out what should be firstresponder after the object is passed. There is no specific view being suggested.
                     .onAppear {
                         DispatchQueue.main.async {
                             UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)

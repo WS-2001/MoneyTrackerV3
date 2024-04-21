@@ -24,6 +24,9 @@ struct UserDefaultsManager {
         return nil
     }
 
+    // Create new JSONEncoder object
+    // Encodes friends array
+    // Uses UserDefaults and saves data with a key to easily store and retrieve later
     static func saveFriends(_ friends: [Friend]) {
         do {
             let encoder = JSONEncoder()

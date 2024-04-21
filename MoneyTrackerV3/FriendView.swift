@@ -93,6 +93,8 @@ struct FriendsView: View {
         .navigationTitle("Money Tracker")
         .preferredColorScheme(isDarkMode ? .dark : .light)
     }
+    // Guard is pretty much an if-else statement (control flow statement)
+    // Searches friend array, and checks whether $0.id [current element] is equal to friend.id passed as an arg when function is called
     private func getIndex(for friend: Friend) -> Int {
         guard let index = friendsViewModel.friends.firstIndex(where: { $0.id == friend.id }) else {
             fatalError("Friend not found in the array")
