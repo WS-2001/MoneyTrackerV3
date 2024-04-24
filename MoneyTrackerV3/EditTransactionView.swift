@@ -69,7 +69,7 @@ struct EditTransactionView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
-                        transaction = originalTransaction
+                        transaction = originalTransaction // Cancel
                         dismiss()
                     }
                 }

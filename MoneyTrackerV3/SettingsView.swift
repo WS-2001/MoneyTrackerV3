@@ -121,10 +121,12 @@ struct SettingsView: View {
         .navigationTitle("Settings")
     }
 
+    // For Dark/Light mode setting
     private func updateAppearanceMode(_ isDarkMode: Bool) {
         UIApplication.shared.windows.first?.rootViewController?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
     }
     
+    // Haptic feedback generator
     private func handleHapticFeedback() {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

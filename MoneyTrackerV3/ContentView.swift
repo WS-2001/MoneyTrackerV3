@@ -20,6 +20,9 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
+            // Navigation Tabs
+            
+            // Friends Tab
             NavigationView {
                 FriendsView(friendsViewModel: friendsViewModel, newFriendName: $newFriendName)
             }
@@ -28,6 +31,7 @@ struct ContentView: View {
             }
             .tag(Tab.friends)
 
+            // Settings Tab
             NavigationView {
                 SettingsView(friendsViewModel: friendsViewModel)
             }
@@ -36,6 +40,7 @@ struct ContentView: View {
             }
             .tag(Tab.settings)
         }
+        // New tab selection generates haptic feedback
         .onChange(of: selectedTab) { newTab in
             if newTab == .friends {
                 generateHapticFeedback(style: .light)
@@ -47,6 +52,7 @@ struct ContentView: View {
     .preferredColorScheme(isDarkMode ? .dark : .light)
     }
     
+    // Helper function to generate haptic feedback based on argument
     private func generateHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.prepare()

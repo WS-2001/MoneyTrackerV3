@@ -35,10 +35,12 @@ class FriendsViewModel: ObservableObject {
         }
     }
 
+    // Saving friends (calls method)
     func saveFriends() {
         UserDefaultsManager.saveFriends(friends)
     }
 
+    // Adding new friend
     func addFriend(name: String) {
         let newFriend = Friend(id: UUID(), name: name, transactions: [])
         friends.append(newFriend)

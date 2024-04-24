@@ -38,6 +38,7 @@ struct FriendsView: View {
                         ) {
                             VStack(alignment: .leading) {
                                 HStack {
+                                    // Friend's initial as 'icon'
                                     RoundedRectangle(cornerRadius: 10)
                                         .frame(width: 30, height: 30)
                                         .overlay(
@@ -48,6 +49,7 @@ struct FriendsView: View {
                                     Text(friend.name)
                                         .font(.headline)
                                     Spacer()
+                                    // Friend's total lend/borrow values
                                     VStack(alignment: .trailing) {
                                         Text("Lent: £\(friend.totalLend, specifier: "%.2f")")
                                             .font(.subheadline)
@@ -60,6 +62,7 @@ struct FriendsView: View {
                             }
                         }
                     }
+                    // Deleting a friend
                     .onDelete { indexSet in
                         friendsViewModel.friends.remove(atOffsets: indexSet)
                         friendsViewModel.saveFriends()
@@ -102,6 +105,7 @@ struct FriendsView: View {
         return index
     }
     
+    // Adding a new friend function
     private func addNewFriend() {
         friendsViewModel.friends.append(Friend(id: UUID(), name: newFriendName, transactions: []))
         friendsViewModel.saveFriends()

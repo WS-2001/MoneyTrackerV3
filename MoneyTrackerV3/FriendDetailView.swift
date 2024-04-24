@@ -180,6 +180,7 @@ struct FriendDetailView: View {
         return friend.transactions.sorted(by: { $0.date > $1.date })
     }
     
+    // Filtering transactions
     private func filteredTransactions() -> [Transaction] {
         switch filterOption {
         case .lent:
@@ -191,6 +192,7 @@ struct FriendDetailView: View {
         }
     }
     
+    // Sorting transactions
     private func sortTransactions(_ option: SortOption) {
         switch option {
         case .dateDescending:
@@ -204,6 +206,7 @@ struct FriendDetailView: View {
         }
     }
     
+    // Format date to display correctly
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

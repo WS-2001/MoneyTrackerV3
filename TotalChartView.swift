@@ -12,6 +12,7 @@ import Charts
 struct TotalChartView: View {
     let friends: [Friend]
     
+    // Total chart in home screen
     var body: some View {
         Chart {
             BarMark(

@@ -11,6 +11,9 @@ import Foundation
 struct UserDefaultsManager {
     static let friendsKey = "friends"
 
+    // Load friends
+    // Create new JSONDecoder object
+    // Decode friends array
     static func loadFriends() -> [Friend]? {
         if let data = UserDefaults.standard.data(forKey: friendsKey) {
             do {
@@ -24,6 +27,7 @@ struct UserDefaultsManager {
         return nil
     }
 
+    // Save friends
     // Create new JSONEncoder object
     // Encodes friends array
     // Uses UserDefaults and saves data with a key to easily store and retrieve later

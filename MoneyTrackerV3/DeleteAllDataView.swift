@@ -28,6 +28,7 @@ struct DeleteAllDataView: View {
         .navigationTitle("Delete All Data")
     }
     
+    // Alert to CONFIRM data deletion
     private func showDeleteAllDataConfirmation() {
         let alert = UIAlertController(title: "Delete All Data", message: "Are you sure you want to delete all data? This will remove all friends and transactions. This action cannot be undone.", preferredStyle: .alert)
         
@@ -39,6 +40,7 @@ struct DeleteAllDataView: View {
         UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
     }
 
+    // Actual function to call delete all data method
     private func deleteAllData() {
         friendsViewModel.deleteAllData()
     }
