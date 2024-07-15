@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		714320CD2C44D98F00C3D90A /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714320CC2C44D98F00C3D90A /* ExchangeRateViewModel.swift */; };
 		714320CF2C44DA6A00C3D90A /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714320CE2C44DA6A00C3D90A /* ExchangeRateView.swift */; };
+		714320EA2C45E42900C3D90A /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714320E92C45E42900C3D90A /* SplitBillView.swift */; };
 		716854252BD242E80061241A /* TotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854242BD242E80061241A /* TotalChartView.swift */; };
 		716854272BD32B6B0061241A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854262BD32B6B0061241A /* HelpView.swift */; };
 		7168542B2BD35A010061241A /* DeleteAllDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168542A2BD35A010061241A /* DeleteAllDataView.swift */; };
@@ -16,7 +17,6 @@
 		71961E162B85F733001C7C06 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E152B85F733001C7C06 /* SettingsView.swift */; };
 		71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E172B85F887001C7C06 /* AddFriendView.swift */; };
 		71961E1A2B87BAC5001C7C06 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E192B87BAC5001C7C06 /* AboutView.swift */; };
-		71961E1C2B88AB6D001C7C06 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E1B2B88AB6D001C7C06 /* AddTransactionView.swift */; };
 		71961E1F2B88BCA4001C7C06 /* EditTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71961E1E2B88BCA4001C7C06 /* EditTransactionView.swift */; };
 		71BC10692B85AF140014321D /* MoneyTrackerV3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC10682B85AF140014321D /* MoneyTrackerV3App.swift */; };
 		71BC106B2B85AF140014321D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC106A2B85AF140014321D /* ContentView.swift */; };
@@ -53,6 +53,7 @@
 /* Begin PBXFileReference section */
 		714320CC2C44D98F00C3D90A /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
 		714320CE2C44DA6A00C3D90A /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
+		714320E92C45E42900C3D90A /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
 		716854242BD242E80061241A /* TotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalChartView.swift; path = ../TotalChartView.swift; sourceTree = "<group>"; };
 		716854262BD32B6B0061241A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		7168542A2BD35A010061241A /* DeleteAllDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataView.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		71961E152B85F733001C7C06 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71961E172B85F887001C7C06 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 		71961E192B87BAC5001C7C06 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		71961E1B2B88AB6D001C7C06 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
 		71961E1E2B88BCA4001C7C06 /* EditTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionView.swift; sourceTree = "<group>"; };
 		71BC10652B85AF140014321D /* MoneyTrackerV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyTrackerV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BC10682B85AF140014321D /* MoneyTrackerV3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTrackerV3App.swift; sourceTree = "<group>"; };
@@ -108,7 +108,6 @@
 		71961E1D2B88B17D001C7C06 /* Currently unused */ = {
 			isa = PBXGroup;
 			children = (
-				71961E1B2B88AB6D001C7C06 /* AddTransactionView.swift */,
 			);
 			path = "Currently unused";
 			sourceTree = "<group>";
@@ -155,6 +154,7 @@
 				71BC109C2B85B02A0014321D /* UserDefaultsManager.swift */,
 				714320CE2C44DA6A00C3D90A /* ExchangeRateView.swift */,
 				714320CC2C44D98F00C3D90A /* ExchangeRateViewModel.swift */,
+				714320E92C45E42900C3D90A /* SplitBillView.swift */,
 				71961E1D2B88B17D001C7C06 /* Currently unused */,
 				71BC106E2B85AF170014321D /* Preview Content */,
 			);
@@ -317,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BC10952B85AF7E0014321D /* TransactionType.swift in Sources */,
-				71961E1C2B88AB6D001C7C06 /* AddTransactionView.swift in Sources */,
 				716854252BD242E80061241A /* TotalChartView.swift in Sources */,
 				71961E182B85F887001C7C06 /* AddFriendView.swift in Sources */,
 				71961E142B85F472001C7C06 /* FriendView.swift in Sources */,
@@ -335,6 +334,7 @@
 				71BC109D2B85B02A0014321D /* UserDefaultsManager.swift in Sources */,
 				7168542B2BD35A010061241A /* DeleteAllDataView.swift in Sources */,
 				71BC10932B85AF620014321D /* Transaction.swift in Sources */,
+				714320EA2C45E42900C3D90A /* SplitBillView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

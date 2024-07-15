@@ -11,6 +11,7 @@ struct FriendsView: View {
     @Binding var newFriendName: String
     @State private var isShowingError = false
     @State private var isAddFriendSheetPresented = false
+    @State private var isSplitBillSheetPresented = false
     
     // Defaults for Settings
     @AppStorage("isDarkMode") private var isDarkMode = false
@@ -90,6 +91,25 @@ struct FriendsView: View {
                 .cornerRadius(20)
                 .sheet(isPresented: $isAddFriendSheetPresented) {
                     AddFriendView(isPresented: $isAddFriendSheetPresented, friendsViewModel: friendsViewModel, newFriendName: $newFriendName, isDarkMode: $isDarkMode)
+                }
+                
+                Button(action: {
+                    isSplitBillSheetPresented = true
+                }) {
+                    Image(systemName: "sterlingsign.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color.green)
+                    
+                    Text("Split Bill")
+                        .font(.headline)
+                        .foregroundColor(Color.green)
+                }
+                .padding()
+                .background(Color.clear)
+                .cornerRadius(20)
+                .sheet(isPresented: $isSplitBillSheetPresented) {
+                    SplitBillView(friendsViewModel: friendsViewModel, isPresented: $isSplitBillSheetPresented)
                 }
             }
         }

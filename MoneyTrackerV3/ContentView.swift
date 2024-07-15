@@ -36,7 +36,7 @@ struct ContentView: View {
                 ExchangeRateView()
             }
             .tabItem {
-                Label("Convert", systemImage: "sterlingsign.circle")
+                Label("Convert", systemImage: "sterlingsign.arrow.circlepath")
             }
             .tag(Tab.convert)
 

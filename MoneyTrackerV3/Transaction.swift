@@ -13,4 +13,5 @@ struct Transaction: Identifiable, Codable {
     var type: TransactionType
     var date: Date
     var note: String?
+    var participants: [UUID]
 }

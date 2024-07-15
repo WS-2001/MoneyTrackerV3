@@ -119,7 +119,7 @@ struct FriendDetailView: View {
                     
                     // Otherwise, continue
                     if let amount = Double(newTransactionAmount) {
-                        let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date(),note: transactionNote)
+                        let newTransaction = Transaction(id: UUID(), friend: friend.id, amount: amount, type: selectedTransactionType, date: Date(),note: transactionNote,participants:[friend.id])
                         friend.transactions.append(newTransaction)
                         friendsViewModel.saveFriends()
                         newTransactionAmount = ""
