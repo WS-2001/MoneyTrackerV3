@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		714320CD2C44D98F00C3D90A /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714320CC2C44D98F00C3D90A /* ExchangeRateViewModel.swift */; };
+		714320CF2C44DA6A00C3D90A /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714320CE2C44DA6A00C3D90A /* ExchangeRateView.swift */; };
 		716854252BD242E80061241A /* TotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854242BD242E80061241A /* TotalChartView.swift */; };
 		716854272BD32B6B0061241A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716854262BD32B6B0061241A /* HelpView.swift */; };
 		7168542B2BD35A010061241A /* DeleteAllDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168542A2BD35A010061241A /* DeleteAllDataView.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		714320CC2C44D98F00C3D90A /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
+		714320CE2C44DA6A00C3D90A /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
 		716854242BD242E80061241A /* TotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalChartView.swift; path = ../TotalChartView.swift; sourceTree = "<group>"; };
 		716854262BD32B6B0061241A /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		7168542A2BD35A010061241A /* DeleteAllDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataView.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				71BC10962B85AFA80014321D /* Friend.swift */,
 				71BC109A2B85B0070014321D /* FriendsViewModel.swift */,
 				71BC109C2B85B02A0014321D /* UserDefaultsManager.swift */,
+				714320CE2C44DA6A00C3D90A /* ExchangeRateView.swift */,
+				714320CC2C44D98F00C3D90A /* ExchangeRateViewModel.swift */,
 				71961E1D2B88B17D001C7C06 /* Currently unused */,
 				71BC106E2B85AF170014321D /* Preview Content */,
 			);
@@ -320,9 +326,11 @@
 				71961E1F2B88BCA4001C7C06 /* EditTransactionView.swift in Sources */,
 				71BC10972B85AFA80014321D /* Friend.swift in Sources */,
 				71BC10992B85AFE80014321D /* FriendDetailView.swift in Sources */,
+				714320CD2C44D98F00C3D90A /* ExchangeRateViewModel.swift in Sources */,
 				71961E162B85F733001C7C06 /* SettingsView.swift in Sources */,
 				71BC109B2B85B0070014321D /* FriendsViewModel.swift in Sources */,
 				71BC10692B85AF140014321D /* MoneyTrackerV3App.swift in Sources */,
+				714320CF2C44DA6A00C3D90A /* ExchangeRateView.swift in Sources */,
 				716854272BD32B6B0061241A /* HelpView.swift in Sources */,
 				71BC109D2B85B02A0014321D /* UserDefaultsManager.swift in Sources */,
 				7168542B2BD35A010061241A /* DeleteAllDataView.swift in Sources */,

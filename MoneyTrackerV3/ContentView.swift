@@ -15,7 +15,7 @@ struct ContentView: View {
     
     // Tabs
     enum Tab {
-        case friends, settings
+        case friends, settings, convert
     }
 
     var body: some View {
@@ -30,6 +30,15 @@ struct ContentView: View {
                 Label("Friends", systemImage: "person.2")
             }
             .tag(Tab.friends)
+            
+            // Currency Conversion Tab
+            NavigationView {
+                ExchangeRateView()
+            }
+            .tabItem {
+                Label("Convert", systemImage: "sterlingsign.circle")
+            }
+            .tag(Tab.convert)
 
             // Settings Tab
             NavigationView {

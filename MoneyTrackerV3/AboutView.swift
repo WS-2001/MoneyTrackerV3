@@ -20,7 +20,11 @@ struct AboutView: View {
                 .font(.body)
                 .padding()
             
-            Text("Version 1.0")
+            Text("Currency conversion is done through an exchange rate API provided by ExchangeRate-API.")
+                .font(.body)
+                .padding()
+            
+            Text("Version 1.1")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
