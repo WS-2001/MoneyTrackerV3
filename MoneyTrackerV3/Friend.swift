@@ -19,4 +19,8 @@ struct Friend: Identifiable, Codable {
     var totalBorrow: Double {
         transactions.filter { $0.type == .borrow }.map { $0.amount }.reduce(0, +)
     }
+    
+    var netBalance: Double {
+        return totalLend - totalBorrow
+    }
 }

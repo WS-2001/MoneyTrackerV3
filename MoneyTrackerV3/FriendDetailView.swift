@@ -46,6 +46,10 @@ struct FriendDetailView: View {
                 }
             }
             
+            // Net Balance
+            Text("Net Balance: £\(friend.netBalance, specifier: "%.2f")")
+                .font(.subheadline)
+            
             // The list of friend's transactions
             List {
                 ForEach(filteredTransactions()) { transaction in
