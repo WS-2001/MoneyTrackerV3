@@ -73,43 +73,45 @@ struct FriendsView: View {
                 
                 Spacer() // Add Spacer to push the Add Friend button to the bottom
 
-                // Add Friend Button and Sheet
-                Button(action: {
-                    isAddFriendSheetPresented = true
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color.blue)
+                HStack {
+                    // Add Friend Button and Sheet
+                    Button(action: {
+                        isAddFriendSheetPresented = true
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color.blue)
+                        
+                        Text("Add Friend")
+                            .font(.headline)
+                            .foregroundColor(Color.blue)
+                    }
+                    .padding()
+                    .background(Color.clear)
+                    .cornerRadius(20)
+                    .sheet(isPresented: $isAddFriendSheetPresented) {
+                        AddFriendView(isPresented: $isAddFriendSheetPresented, friendsViewModel: friendsViewModel, newFriendName: $newFriendName, isDarkMode: $isDarkMode)
+                    }
                     
-                    Text("Add Friend")
-                        .font(.headline)
-                        .foregroundColor(Color.blue)
-                }
-                .padding()
-                .background(Color.clear)
-                .cornerRadius(20)
-                .sheet(isPresented: $isAddFriendSheetPresented) {
-                    AddFriendView(isPresented: $isAddFriendSheetPresented, friendsViewModel: friendsViewModel, newFriendName: $newFriendName, isDarkMode: $isDarkMode)
-                }
-                
-                Button(action: {
-                    isSplitBillSheetPresented = true
-                }) {
-                    Image(systemName: "sterlingsign.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color.green)
-                    
-                    Text("Split Bill")
-                        .font(.headline)
-                        .foregroundColor(Color.green)
-                }
-                .padding()
-                .background(Color.clear)
-                .cornerRadius(20)
-                .sheet(isPresented: $isSplitBillSheetPresented) {
-                    SplitBillView(friendsViewModel: friendsViewModel, isPresented: $isSplitBillSheetPresented)
+                    Button(action: {
+                        isSplitBillSheetPresented = true
+                    }) {
+                        Image(systemName: "sterlingsign.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color.green)
+                        
+                        Text("Split Bill")
+                            .font(.headline)
+                            .foregroundColor(Color.green)
+                    }
+                    .padding()
+                    .background(Color.clear)
+                    .cornerRadius(20)
+                    .sheet(isPresented: $isSplitBillSheetPresented) {
+                        SplitBillView(friendsViewModel: friendsViewModel, isPresented: $isSplitBillSheetPresented, isDarkMode: $isDarkMode)
+                    }
                 }
             }
         }
