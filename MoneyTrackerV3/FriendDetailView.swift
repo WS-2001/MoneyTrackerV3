@@ -60,21 +60,6 @@ struct FriendDetailView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
-            // Predicted Future Net Balance Line Chart
-            if showCharts {
-                // If predictedNetBalances is empty, proceed to predict, otherwise display
-                if futurePredictionsViewModel.predictedNetBalances.isEmpty {
-                    Text("Predicting the future...")
-                        .padding()
-                        .onAppear {
-                            futurePredictionsViewModel.predictFutureNetBalances(for: friend)
-                        }
-                } else {
-                    LineChartView(data: futurePredictionsViewModel.predictedNetBalances, title: "Predicted Net Balance", legend: "Hold & drag for details", form: ChartForm.large, valueSpecifier: "%.2f")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
-            
             // Net balance underneath chart
             Text("Net Balance: £\(friend.netBalance, specifier: "%.2f")")
                 .font(.subheadline)
@@ -89,7 +74,7 @@ struct FriendDetailView: View {
                         futurePredictionsViewModel.predictFutureNetBalances(for: friend)
                     }
             } else {
-                Text("Predicted Net Balance: £\(futurePredictionsViewModel.predictedNetBalances.first ?? 0.0, specifier: "%.2f")")
+                Text("Tomorrow's Prediction: £\(futurePredictionsViewModel.predictedNetBalances.first ?? 0.0, specifier: "%.2f")")
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .padding(.bottom, 10)
@@ -97,6 +82,21 @@ struct FriendDetailView: View {
             
             // The list of friend's transactions
             List {
+                // Predicted Future Net Balance Line Chart
+                if showCharts {
+                    // If predictedNetBalances is empty, proceed to predict, otherwise display
+                    if futurePredictionsViewModel.predictedNetBalances.isEmpty {
+                        Text("Predicting the future...")
+                            .padding()
+                            .onAppear {
+                                futurePredictionsViewModel.predictFutureNetBalances(for: friend)
+                            }
+                    } else {
+                        LineChartView(data: futurePredictionsViewModel.predictedNetBalances, title: "Predicted Net Balance", legend: "Hold & drag for details", form: ChartForm.large, dropShadow: false, valueSpecifier: "%.2f")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+                
                 ForEach(filteredTransactions()) { transaction in
                     let transactionType = transaction.type == .lend ? "Lent" : "Borrowed"
                     let formattedAmount = String(format: "%.2f", transaction.amount)
