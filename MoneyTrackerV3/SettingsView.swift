@@ -57,12 +57,12 @@ struct SettingsView: View {
             
             // Charts
             Section(header: Text("Charts")) {
-                Toggle("Show Charts for Friends", isOn: $showCharts)
+                Toggle("Show 'Future Net Balance Prediction' Charts for Friends", isOn: $showCharts)
                     .onChange(of: showCharts) { newValue in
                         UserDefaults.standard.set(newValue, forKey: "showCharts")
                     }
                 
-                Text("If enabled, a chart will show at the top of a friend's transaction list.")
+                Text("If enabled, a chart will show at the top of a friend's transaction list showing what your future net balance could look like, utilising a fully trained model.")
                     .font(.caption)
                     .foregroundColor(.gray)
                 

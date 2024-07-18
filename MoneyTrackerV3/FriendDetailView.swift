@@ -6,6 +6,8 @@
 //
 import SwiftUI
 import Charts
+import CoreML
+import SwiftUICharts
 
 struct FriendDetailView: View {
     @Binding var friend: Friend
@@ -21,12 +23,31 @@ struct FriendDetailView: View {
     @State private var selectedTransactionID: UUID?
     @State private var isEditingTransaction = false
     @State private var showingEmptyTransactionAlert = false
+    @State private var predictedNetBalance: Double?
     
     // Accessing the Settings and defaults if not set
     @AppStorage("notePreviewLines") private var notePreviewLines = 3
     @AppStorage("noteEditingSymbol") private var noteEditingSymbol = "pencil.circle"
     @AppStorage("showCharts") private var showCharts = true
     @AppStorage("enableNoteEditingIcon") private var enableNoteEditingIcon = true
+    
+    // Future Predictions View Model pass
+    @StateObject private var futurePredictionsViewModel: FuturePredictionsViewModel
+
+    // Initialising and handling any errors that may occur
+    init(friend: Binding<Friend>, friendsViewModel: FriendsViewModel) {
+        self._friend = friend
+        self.friendsViewModel = friendsViewModel
+        
+        do {
+            let netBalancePredictor = try NetBalancePredictor()
+            self._futurePredictionsViewModel = StateObject(wrappedValue: FuturePredictionsViewModel(netBalancePredictor: netBalancePredictor))
+        } catch {
+            print("Failed to initialise NetBalancePredictor: \(error.localizedDescription)")
+            // If failed, provide fallback with 'try!'
+            self._futurePredictionsViewModel = StateObject(wrappedValue: FuturePredictionsViewModel(netBalancePredictor: try! NetBalancePredictor()))
+        }
+    }
     
     var body: some View {
         VStack {
@@ -39,16 +60,40 @@ struct FriendDetailView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
-            // Display chart only if toggle is enabled in Settings
+            // Predicted Future Net Balance Line Chart
             if showCharts {
-                Section() { // Removed header text to minimise clutter
-                    FriendBalanceChartView(friend: friend)
+                // If predictedNetBalances is empty, proceed to predict, otherwise display
+                if futurePredictionsViewModel.predictedNetBalances.isEmpty {
+                    Text("Predicting the future...")
+                        .padding()
+                        .onAppear {
+                            futurePredictionsViewModel.predictFutureNetBalances(for: friend)
+                        }
+                } else {
+                    LineChartView(data: futurePredictionsViewModel.predictedNetBalances, title: "Predicted Net Balance", legend: "Hold & drag for details", form: ChartForm.large, valueSpecifier: "%.2f")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
             
-            // Net Balance
+            // Net balance underneath chart
             Text("Net Balance: £\(friend.netBalance, specifier: "%.2f")")
                 .font(.subheadline)
+            
+            // Predicted net balance underneath
+            if futurePredictionsViewModel.predictedNetBalances.isEmpty {
+                Text("Predicted Net Balance: Loading...")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 10)
+                    .onAppear {
+                        futurePredictionsViewModel.predictFutureNetBalances(for: friend)
+                    }
+            } else {
+                Text("Predicted Net Balance: £\(futurePredictionsViewModel.predictedNetBalances.first ?? 0.0, specifier: "%.2f")")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 10)
+            }
             
             // The list of friend's transactions
             List {
@@ -67,9 +112,9 @@ struct FriendDetailView: View {
                                     .foregroundColor(.gray)
                                     .lineLimit(notePreviewLines)
                             }
-
+                            
                             Spacer()
-
+                            
                             // Edit Transaction
                             Button(action: {
                                 if let index = friend.transactions.firstIndex(where: { $0.id == transaction.id }) {
@@ -94,6 +139,7 @@ struct FriendDetailView: View {
                 .onDelete { indexSet in
                     friend.transactions.remove(atOffsets: indexSet)
                     friendsViewModel.saveFriends()
+                    futurePredictionsViewModel.predictFutureNetBalances(for: friend)
                 }
             }
             
@@ -128,6 +174,7 @@ struct FriendDetailView: View {
                         friendsViewModel.saveFriends()
                         newTransactionAmount = ""
                         transactionNote = ""
+                        futurePredictionsViewModel.predictFutureNetBalances(for: friend)
                     }
                 } label: {
                     Image(systemName: "plus")
@@ -260,27 +307,4 @@ enum FilterOption: String, CaseIterable {
     case both = "Both"
     case lent = "Lent"
     case borrowed = "Borrowed"
-}
-
-// For current friend's totalLend and totalBorrow values to be displayed in the bar chart
-struct FriendBalanceChartView: View {
-    let friend: Friend
-    
-    var body: some View {
-        Chart {
-            BarMark(
-                x: .value("Amount", friend.totalLend),
-                y: .value("Type", "Lent")
-            )
-            .foregroundStyle(.green)
-            
-            BarMark(
-                x: .value("Amount", friend.totalBorrow),
-                y: .value("Type", "Borrowed")
-            )
-            .foregroundStyle(.red)
-        }
-        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-        .frame(height: 120)
-    }
 }

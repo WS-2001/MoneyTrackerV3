@@ -24,9 +24,7 @@ struct FriendsView: View {
                     // Chart for total lent and borrowed
                     // Display only if toggle is enabled in Settings
                     if showTotalChart {
-                        Section(header: Text("Total Lent and Borrowed")) {
                             TotalChartView(friends: friendsViewModel.friends)
-                        }
                     }
                     
                     // For every entry in list of friends

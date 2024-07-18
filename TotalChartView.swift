@@ -7,27 +7,18 @@
 
 import Foundation
 import SwiftUI
-import Charts
+import SwiftUICharts
 
 struct TotalChartView: View {
     let friends: [Friend]
     
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
     // Total chart in home screen
     var body: some View {
-        Chart {
-            BarMark(
-                x: .value("Amount", totalLent),
-                y: .value("Type", String(format: "Lent £%.2f", totalLent)) // Display with 2dp
-            )
-            .foregroundStyle(.green)
-            
-            BarMark(
-                x: .value("Amount", totalBorrowed),
-                y: .value("Type", String(format: "Borrowed £%.2f", totalBorrowed)) // Display with 2dp
-            )
-            .foregroundStyle(.red)
+        VStack {
+            PieChartView(data: [totalLent,totalBorrowed], title: (String(format: "Total Lent: %.2f\nTotal Borrowed: %.2f", totalLent, totalBorrowed)), form: ChartForm.large, dropShadow: false, valueSpecifier: "%.2f")
         }
-        .frame(height: 120)
     }
     
     // Calculate totalLent and totalBorrowed from all friends

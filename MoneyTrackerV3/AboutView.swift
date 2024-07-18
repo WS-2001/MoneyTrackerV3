@@ -20,7 +20,7 @@ struct AboutView: View {
                 .font(.body)
                 .padding()
             
-            Text("Currency conversion is done through an exchange rate API provided by ExchangeRate-API.")
+            Text("Currency conversion powered by ExchangeRate-API through their API interface.\n\nCharts powered by a modified version of SwiftUICharts by Andras Samu.")
                 .font(.body)
                 .padding()
             
