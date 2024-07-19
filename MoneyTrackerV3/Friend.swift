@@ -23,4 +23,29 @@ struct Friend: Identifiable, Codable {
     var netBalance: Double {
         return totalLend - totalBorrow
     }
+    
+    // Calculating historical transaction data for overview of past totalLend and totalBorrow values on a chart
+    func historicalData() -> [(date: Date, totalLend: Double, totalBorrow: Double)] {
+        let calendar = Calendar.current
+        var history: [(date: Date, totalLend: Double, totalBorrow: Double)] = []
+
+        for transaction in transactions {
+            let date = calendar.startOfDay(for: transaction.date)
+            if let index = history.firstIndex(where: { $0.date == date }) {
+                if transaction.type == .lend {
+                    history[index].totalLend += transaction.amount
+                } else {
+                    history[index].totalBorrow += transaction.amount
+                }
+            } else {
+                let totalLend = transaction.type == .lend ? transaction.amount : 0
+                let totalBorrow = transaction.type == .borrow ? transaction.amount : 0
+                history.append((date: date, totalLend: totalLend, totalBorrow: totalBorrow))
+            }
+        }
+
+        // Sort the history by date for easy charting
+        history.sort { $0.date < $1.date }
+        return history
+    }
 }

@@ -60,7 +60,7 @@ struct FriendDetailView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
-            // Net balance underneath chart
+            // Net balance underneath sort options to keep in constant view
             Text("Net Balance: £\(friend.netBalance, specifier: "%.2f")")
                 .font(.subheadline)
             
@@ -80,6 +80,19 @@ struct FriendDetailView: View {
                     .padding(.bottom, 10)
             }
             
+            // Nav link to historical data view charts
+            // Main screen would be too cluttered otherwise
+            NavigationLink(destination: HistoricalDataView(historicalData: friend.historicalData())) {
+                Text("View Historical Data")
+                    .font(.subheadline)
+                    .foregroundColor(.blue)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.blue, lineWidth: 2)
+                    )
+            }
+            
             // The list of friend's transactions
             List {
                 // Predicted Future Net Balance Line Chart
@@ -97,6 +110,7 @@ struct FriendDetailView: View {
                     }
                 }
                 
+                // List of transactions
                 ForEach(filteredTransactions()) { transaction in
                     let transactionType = transaction.type == .lend ? "Lent" : "Borrowed"
                     let formattedAmount = String(format: "%.2f", transaction.amount)
